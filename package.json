@@ -1,0 +1,86 @@
+{
+  "name": "csun20-aria-options-menu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dequelabs/csun20-aria-options-menu.git",
+  "author": "<schne324@gmail.com>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "axe-core": "^3.4.0",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.5.0",
+    "parcel": "^1.12.4",
+    "prettier": "^1.19.1",
+    "simulant": "^0.2.2"
+  },
+  "scripts": {
+    "build": "parcel build demo/index.html",
+    "dev": "parcel demo/index.html",
+    "lint": "eslint .",
+    "precommit": "lint-staged",
+    "fmt": "prettier --write *.{js,md} **/*.{js,md}",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{css,md,json,less}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "index.js"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+      "test": true,
+      "expect": true,
+      "beforeEach": true,
+      "afterEach": true,
+      "describe": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 60,
+    "bracketSpacing": true,
+    "useTabs": false,
+    "trailingComma": "none",
+    "arrowParens": "avoid"
+  }
+}
