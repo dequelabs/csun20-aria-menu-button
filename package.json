@@ -7,16 +7,28 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@babel/core": "^7.7.5",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-stage-0": "^7.8.3",
     "axe-core": "^3.4.0",
+    "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
+    "cauldron-react": "^5.0.0",
+    "deque-pattern-library": "^7.0.0",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
     "parcel": "^1.12.4",
     "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "react-router-dom": "^5.1.2",
     "simulant": "^0.2.2"
   },
   "scripts": {
@@ -45,34 +57,44 @@
   },
   "babel": {
     "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
+      "@babel/env",
+      "@babel/react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
     ]
   },
   "eslintConfig": {
+    "parser": "babel-eslint",
     "env": {
       "browser": true,
       "node": true,
       "es6": true
     },
-    "extends": "eslint:recommended",
-    "globals": {
-      "test": true,
-      "expect": true,
-      "beforeEach": true,
-      "afterEach": true,
-      "describe": true
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:jsx-a11y/recommended",
+      "prettier",
+      "prettier/react"
+    ],
+    "plugins": [
+      "react",
+      "jsx-a11y"
+    ],
+    "settings": {
+      "react": {
+        "version": "16"
+      }
     },
-    "parserOptions": {
-      "ecmaVersion": 2018,
-      "sourceType": "module"
-    }
+    "overrides": [
+      {
+        "files": "**/*.test.js",
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "prettier": {
     "semi": false,

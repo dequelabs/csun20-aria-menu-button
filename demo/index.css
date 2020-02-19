@@ -1,0 +1,20 @@
+h1,
+h2,
+h3 {
+  font-weight: 200;
+  text-align: center;
+}
+
+.app .dqpl-top-bar > ul {
+  justify-content: space-evenly;
+}
+
+.app .dqpl-top-bar [role='menubar'],
+.app [role='main'] {
+  max-width: 775px;
+  margin: 0 auto;
+}
+
+.Wrap {
+  padding: 1em;
+}
