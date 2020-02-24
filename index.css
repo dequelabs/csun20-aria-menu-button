@@ -1,0 +1,35 @@
+.MenuButton [aria-expanded='false'] + [role='menu'] {
+  display: none;
+}
+
+.MenuButton button {
+  box-shadow: 0 0 2px #000;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.MenuButton [role='menu'] {
+  position: absolute;
+  list-style: none;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: #fff;
+}
+
+.MenuButton [role='menuitem'] {
+  padding: 5px 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.MenuButton [role='menuitem']:last-child {
+  border-bottom: 0;
+}
+
+.MenuButton [role='menuitem']:hover,
+.MenuButton [role='menuitem']:focus {
+  background: #eee;
+}
+
+.dqpl-link {
+  margin: 10px auto;
+}

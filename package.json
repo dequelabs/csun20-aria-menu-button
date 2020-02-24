@@ -16,6 +16,8 @@
     "babel-jest": "^24.9.0",
     "cauldron-react": "^5.0.0",
     "deque-pattern-library": "^7.0.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -48,11 +50,6 @@
     "*.{css,md,json,less}": [
       "prettier --write",
       "git add"
-    ]
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "index.js"
     ]
   },
   "babel": {
@@ -104,5 +101,19 @@
     "useTabs": false,
     "trailingComma": "none",
     "arrowParens": "avoid"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "index.js"
+    ],
+    "testMatch": [
+      "**/*.test.js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>test-utils/setupTests.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css)$": "<rootDir>test-utils/styleMock.js"
+    }
   }
 }

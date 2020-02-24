@@ -18,3 +18,7 @@ h3 {
 .Wrap {
   padding: 1em;
 }
+
+.Links a {
+  margin-right: 15px;
+}
