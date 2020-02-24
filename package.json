@@ -41,6 +41,11 @@
     "fmt": "prettier --write *.{js,md} **/*.{js,md}",
     "test": "jest"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
