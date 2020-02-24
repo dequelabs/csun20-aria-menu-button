@@ -37,7 +37,6 @@
     "build": "parcel build demo/index.html",
     "dev": "parcel demo/index.html",
     "lint": "eslint .",
-    "precommit": "lint-staged",
     "fmt": "prettier --write *.{js,md} **/*.{js,md}",
     "test": "jest"
   },
