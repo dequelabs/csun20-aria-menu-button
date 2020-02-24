@@ -16,6 +16,7 @@ import Contact from './Contact'
 
 let hasTransitioned = false // avoid focusing on the first render
 const App = () => {
+  // TODO: use useRef here
   const [mainRef, setMainRef] = useState()
   const focusMain = () => {
     if (!mainRef) {
