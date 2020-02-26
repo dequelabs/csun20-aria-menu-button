@@ -1,11 +1,12 @@
 [role='log'] {
   height: 130px;
-  background: #222;
+  background: rgb(2, 16, 26);
   color: #fff;
   padding: 1em;
   overflow: auto;
   border-radius: 21px;
-  border: 4px double #fff;
+  box-shadow: 0 0 4px rgb(2, 16, 26);
+  margin: 0 auto;
 }
 
 [role='log'] li {

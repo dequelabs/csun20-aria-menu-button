@@ -1,3 +1,7 @@
+body.dqpl-no-sidebar {
+  color: #000;
+}
+
 .MenuButton [aria-expanded='false'] + [role='menu'] {
   display: none;
 }
@@ -32,4 +36,9 @@
 
 .dqpl-link {
   margin: 10px auto;
+}
+
+p {
+  font-size: 1.1em;
+  font-weight: 200;
 }

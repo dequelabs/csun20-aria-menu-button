@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 import {
   Workspace,
   MenuItem,
@@ -16,19 +16,19 @@ import Contact from './Contact'
 
 let hasTransitioned = false // avoid focusing on the first render
 const App = () => {
-  // TODO: use useRef here
-  const [mainRef, setMainRef] = useState()
+  const mainRef = useRef()
   const focusMain = () => {
-    if (!mainRef) {
-      return
-    }
-
+    // avoid messing with focus on a real page load
     if (!hasTransitioned) {
       hasTransitioned = true
       return
     }
 
-    mainRef.focus()
+    if (!mainRef.current) {
+      return
+    }
+
+    mainRef.current.focus()
   }
 
   return (
@@ -54,7 +54,7 @@ const App = () => {
         </TopBar>
         <Workspace
           noSideBar
-          workspaceRef={el => setMainRef(el)}
+          workspaceRef={mainRef}
           tabIndex={-1}
           aria-labelledby="main-heading"
           id="main-content"
