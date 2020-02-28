@@ -1,6 +1,7 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import {
-  Workspace,
+  Layout,
+  Main,
   MenuItem,
   TopBar,
   SkipLink
@@ -13,10 +14,21 @@ import {
 import Home from './Home'
 import About from './About'
 import Contact from './Contact'
+import './App.css'
 
 let hasTransitioned = false // avoid focusing on the first render
 const App = () => {
   const mainRef = useRef()
+  // remove tabindex on blur of main so we don't
+  // get excess focus rings when the user clicks
+  // anywhere inside of the main content
+  const onMainBlur = () => {
+    if (!mainRef.current) {
+      return
+    }
+    mainRef.current.removeEventListener('blur', onMainBlur)
+    mainRef.current.removeAttribute('tabindex')
+  }
   const focusMain = () => {
     // avoid messing with focus on a real page load
     if (!hasTransitioned) {
@@ -28,8 +40,18 @@ const App = () => {
       return
     }
 
+    mainRef.current.tabIndex = -1
     mainRef.current.focus()
+    mainRef.current.addEventListener('blur', onMainBlur)
   }
+
+  useEffect(() => {
+    if (!mainRef.current) {
+      return
+    }
+
+    mainRef.current.addEventListener('blur', onMainBlur)
+  }, [mainRef])
 
   return (
     <Router>
@@ -52,38 +74,46 @@ const App = () => {
             </Link>
           </MenuItem>
         </TopBar>
-        <Workspace
-          noSideBar
-          workspaceRef={mainRef}
-          tabIndex={-1}
-          aria-labelledby="main-heading"
-          id="main-content"
-        >
-          <Route
-            exact
-            path="/"
-            render={() => {
-              focusMain()
-              return <Home />
-            }}
-          />
-          <Route
-            exact
-            path="/about"
-            render={() => {
-              focusMain()
-              return <About />
-            }}
-          />
-          <Route
-            exact
-            path="/contact"
-            render={() => {
-              focusMain()
-              return <Contact />
-            }}
-          />
-        </Workspace>
+        <Layout>
+          <Main
+            mainRef={mainRef}
+            aria-labelledby="main-heading"
+            id="main-content"
+          >
+            <Route
+              exact
+              path="/"
+              render={() => {
+                focusMain()
+                return <Home />
+              }}
+            />
+            <Route
+              exact
+              path="/about"
+              render={() => {
+                focusMain()
+                return <About />
+              }}
+            />
+            <Route
+              exact
+              path="/contact"
+              render={() => {
+                focusMain()
+                return <Contact />
+              }}
+            />
+          </Main>
+          <footer>
+            <Link to="/contact" className="dqpl-link">
+              Request a free quote today!
+            </Link>
+            <Link to="/about" className="dqpl-link">
+              Learn more about us
+            </Link>
+          </footer>
+        </Layout>
       </>
     </Router>
   )

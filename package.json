@@ -8,13 +8,15 @@
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-stage-0": "^7.8.3",
-    "axe-core": "^3.4.0",
+    "axe-core": "^3.5.1",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
-    "cauldron-react": "^5.0.0",
+    "babel-polyfill": "^6.26.0",
+    "cauldron-react": "^5.0.0-canary.c95dd0e0",
     "deque-pattern-library": "^7.0.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
@@ -24,6 +26,7 @@
     "eslint-plugin-react": "^7.18.3",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
+    "jest-puppeteer": "^4.4.0",
     "lint-staged": "^9.5.0",
     "parcel": "^1.12.4",
     "prettier": "^1.19.1",
@@ -38,7 +41,9 @@
     "dev": "parcel demo/index.html",
     "lint": "eslint .",
     "fmt": "prettier --write *.{js,md} **/*.{js,md}",
-    "test": "jest"
+    "test": "jest",
+    "test:unit": "jest --projects unit",
+    "test:e2e": "jest --projects e2e"
   },
   "husky": {
     "hooks": {
@@ -58,12 +63,26 @@
   },
   "babel": {
     "presets": [
-      "@babel/env",
+      [
+        "@babel/env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
       "@babel/react"
     ],
     "plugins": [
       "@babel/plugin-proposal-class-properties"
-    ]
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "@babel/plugin-transform-runtime"
+        ]
+      }
+    }
   },
   "eslintConfig": {
     "parser": "babel-eslint",
@@ -90,9 +109,15 @@
     },
     "overrides": [
       {
-        "files": "**/*.test.js",
+        "files": [
+          "e2e/**/*.js",
+          "**/*.test.js"
+        ],
         "env": {
           "jest": true
+        },
+        "globals": {
+          "page": true
         }
       }
     ]
@@ -107,17 +132,38 @@
     "arrowParens": "avoid"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "index.js"
-    ],
-    "testMatch": [
-      "**/*.test.js"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>test-utils/setupTests.js"
-    ],
-    "moduleNameMapper": {
-      "\\.(css)$": "<rootDir>test-utils/styleMock.js"
-    }
+    "projects": [
+      {
+        "displayName": "unit",
+        "collectCoverageFrom": [
+          "index.js"
+        ],
+        "testMatch": [
+          "**/*.test.js"
+        ],
+        "setupFilesAfterEnv": [
+          "<rootDir>test-utils/setupTests.js"
+        ],
+        "moduleNameMapper": {
+          "\\.(css)$": "<rootDir>test-utils/styleMock.js"
+        }
+      },
+      {
+        "displayName": "e2e",
+        "testMatch": [
+          "**/e2e/index.js"
+        ],
+        "setupFilesAfterEnv": [
+          "<rootDir>test-utils/setupTests.js"
+        ],
+        "moduleNameMapper": {
+          "\\.(css)$": "<rootDir>test-utils/styleMock.js"
+        },
+        "preset": "jest-puppeteer"
+      }
+    ]
+  },
+  "dependencies": {
+    "puppeteer": "^2.1.1"
   }
 }

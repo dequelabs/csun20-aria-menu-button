@@ -1,13 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const Contact = () => (
+const Contact = ({ h1Ref }) => (
   <div className="Wrap">
     <div className="hero">
       <span
         aria-hidden="true"
         className="fas fa-mobile-alt"
       />
-      <h1 id="main-heading">Contact</h1>
+      <h1 ref={h1Ref} id="main-heading">
+        Contact
+      </h1>
     </div>
     <div className="Content">
       <p>
@@ -26,4 +29,7 @@ const Contact = () => (
   </div>
 )
 
+Contact.propTypes = {
+  h1Ref: PropTypes.shape({ current: PropTypes.any })
+}
 export default Contact

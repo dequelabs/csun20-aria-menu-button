@@ -33,12 +33,3 @@ body.dqpl-no-sidebar {
 .MenuButton [role='menuitem']:focus {
   background: #eee;
 }
-
-.dqpl-link {
-  margin: 10px auto;
-}
-
-p {
-  font-size: 1.1em;
-  font-weight: 200;
-}
