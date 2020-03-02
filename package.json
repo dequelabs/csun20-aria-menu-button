@@ -151,7 +151,7 @@
       {
         "displayName": "e2e",
         "testMatch": [
-          "**/e2e/index.js"
+          "**/e2e/*.js"
         ],
         "setupFilesAfterEnv": [
           "<rootDir>test-utils/setupTests.js"

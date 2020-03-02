@@ -1,7 +1,6 @@
 const fs = require('fs')
 
 async function injectAxe(page) {
-  // use page.evaluate to inject axe to bypass extension csp
   const axeContents = await new Promise(
     (resolve, reject) => {
       fs.readFile(

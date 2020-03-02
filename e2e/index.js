@@ -2,10 +2,18 @@ import { runAxe } from './helpers/axe'
 const sleep = t =>
   new Promise(resolve => setTimeout(resolve, t))
 
+afterEach(async () => {
+  const results = await runAxe(page)
+  expect(results.violations).toHaveLength(0)
+})
+
 describe('global', () => {
-  test('manages focus on route transition', async () => {
+  beforeAll(async () => {
     await page.goto('http://localhost:1234/')
     await page.waitForSelector('[role="main"]')
+  })
+
+  test('manages focus on route transition', async () => {
     await page.click("[role='menubar'] li:nth-of-type(2) a")
     await sleep(500)
     const mainIsFocused = await page.evaluate(
@@ -17,10 +25,8 @@ describe('global', () => {
     expect(mainIsFocused).toBe(true)
   })
 
-  test('skip link focuses main', async () => {
-    await page.goto('http://localhost:1234/')
-    await page.waitForSelector('[role="main"]')
-    await page.focus('.dqpl-skip-link')
+  test('clicking skip link focuses main', async () => {
+    await page.focus('.dqpl-skip-link') // make it visible so we can click it
     await page.click('.dqpl-skip-link')
     const mainIsFocused = await page.evaluate(
       () =>
@@ -29,19 +35,6 @@ describe('global', () => {
     )
 
     expect(mainIsFocused).toBe(true)
-  })
-})
-
-describe('home page', () => {
-  beforeAll(async () => {
-    await page.goto('http://localhost:1234/')
-    await page.waitForSelector('.Wrap')
-  })
-  describe('default state', () => {
-    test('is #axeClean', async () => {
-      const results = await runAxe(page)
-      expect(results.violations).toHaveLength(0)
-    })
   })
 
   describe('footer', () => {

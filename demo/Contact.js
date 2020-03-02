@@ -165,7 +165,7 @@ const Contact = ({ h1Ref }) => {
             <em>No drafts saved</em>
           </p>
         ) : (
-          <ul aria-labelledby="saved-drafts" tabIndex={-1}>
+          <ul aria-labelledby="saved-drafts">
             {drafts.map((draft, i) => (
               <li key={`draft-${i}-${drafts.length}`}>
                 <h3>Draft {i + 1}</h3>
