@@ -47,6 +47,9 @@ const Home = () => {
                 setActionLog([...actionLog, el.innerText])
               }
             />
+            <p>
+              <em>actions speak louder than words</em>
+            </p>
             <h2 id="action-log-heading">Action log</h2>
             <div
               role="log"

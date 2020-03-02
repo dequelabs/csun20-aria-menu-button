@@ -1,9 +1,10 @@
 module.exports = {
   server: {
-    command: 'yarn dev',
+    command: 'npm run test:server',
     port: 1234
   },
   launch: {
-    headless: true
+    headless: false,
+    slowMo: 50
   }
 }

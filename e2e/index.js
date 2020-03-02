@@ -16,6 +16,20 @@ describe('global', () => {
 
     expect(mainIsFocused).toBe(true)
   })
+
+  test('skip link focuses main', async () => {
+    await page.goto('http://localhost:1234/')
+    await page.waitForSelector('[role="main"]')
+    await page.focus('.dqpl-skip-link')
+    await page.click('.dqpl-skip-link')
+    const mainIsFocused = await page.evaluate(
+      () =>
+        document.activeElement ===
+        document.querySelector('[role="main"]')
+    )
+
+    expect(mainIsFocused).toBe(true)
+  })
 })
 
 describe('home page', () => {

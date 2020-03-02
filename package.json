@@ -24,6 +24,7 @@
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.3",
+    "http-server": "^0.12.1",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "jest-puppeteer": "^4.4.0",
@@ -41,7 +42,8 @@
     "dev": "parcel demo/index.html",
     "lint": "eslint .",
     "fmt": "prettier --write *.{js,md} **/*.{js,md}",
-    "test": "jest"
+    "test": "jest",
+    "test:server": "http-server ./dist --port 1234"
   },
   "husky": {
     "hooks": {

@@ -154,7 +154,7 @@ const Contact = ({ h1Ref }) => {
           </CardFooter>
         </Card>
       </form>
-      <div
+      <section
         className="Drafts"
         tabIndex={-1}
         ref={draftsList}
@@ -201,7 +201,7 @@ const Contact = ({ h1Ref }) => {
             ))}
           </ul>
         )}
-      </div>
+      </section>
     </div>
   )
 }
