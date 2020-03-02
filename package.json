@@ -41,9 +41,7 @@
     "dev": "parcel demo/index.html",
     "lint": "eslint .",
     "fmt": "prettier --write *.{js,md} **/*.{js,md}",
-    "test": "jest",
-    "test:unit": "jest --projects unit",
-    "test:e2e": "jest --projects e2e"
+    "test": "jest"
   },
   "husky": {
     "hooks": {

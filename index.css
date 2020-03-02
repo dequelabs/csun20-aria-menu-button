@@ -18,11 +18,17 @@ body.dqpl-no-sidebar {
   border: 1px solid #ccc;
   cursor: pointer;
   background: #fff;
+  color: #000;
+  z-index: 9;
 }
 
 .MenuButton [role='menuitem'] {
   padding: 5px 20px;
   border-bottom: 1px solid #ccc;
+}
+
+.MenuButton [role='menuitem'] span {
+  white-space: nowrap;
 }
 
 .MenuButton [role='menuitem']:last-child {

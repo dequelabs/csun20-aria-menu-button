@@ -7,7 +7,8 @@ export default class MenuButton extends Component {
   static propTypes = {
     buttonContent: PropTypes.node.isRequired,
     items: PropTypes.array.isRequired,
-    onSelection: PropTypes.func.isRequired
+    onSelection: PropTypes.func.isRequired,
+    className: PropTypes.string
   }
   state = {
     expanded: false,
@@ -123,13 +124,17 @@ export default class MenuButton extends Component {
 
   render() {
     const { expanded } = this.state
-    const { items, buttonContent } = this.props
+    const {
+      items,
+      buttonContent,
+      className = ''
+    } = this.props
     const buttonId = `trigger-${this.idSuffix}`
     const menuId = `menu-${this.idSuffix}`
     this.menuItemRefs = [] // reset to avoid stale refs
 
     return (
-      <div className="MenuButton">
+      <div className={`MenuButton ${className}`}>
         <button
           type="button"
           id={buttonId}

@@ -1,0 +1,74 @@
+.app
+  .dqpl-tile
+  .dqpl-tile-header
+  .MenuButton.ContactActions {
+  position: absolute;
+  top: 11px;
+  right: 15px;
+}
+
+.app
+  .dqpl-tile
+  .dqpl-tile-header
+  .MenuButton.ContactActions
+  button {
+  border-radius: 0;
+  padding: 8px;
+}
+
+.Contact .dqpl-text-input,
+.Contact .dqpl-textarea {
+  width: 100%;
+}
+
+.Drafts {
+  max-width: 476px;
+  margin: 0 auto;
+}
+
+.Drafts h3 {
+  margin-top: 0;
+}
+
+.Drafts p {
+  text-align: center;
+}
+
+.Drafts li {
+  width: 300px;
+  border-radius: 5px;
+  padding: 1em;
+  box-shadow: 0 0 3px;
+  list-style-type: none;
+  margin: 10px auto;
+}
+
+.Drafts dl > div {
+  display: flex;
+}
+
+.Drafts dt {
+  font-weight: bold;
+}
+
+.Drafts dd {
+  font-style: italic;
+  margin-left: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.DraftControls button {
+  border: 1px solid #ccc;
+  margin-right: 5px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px;
+  transition: box-shadow 300ms;
+}
+
+.DraftControls button:hover,
+.DraftControls button:focus {
+  box-shadow: 0 0 6px;
+  transition: box-shadow 300ms;
+}
