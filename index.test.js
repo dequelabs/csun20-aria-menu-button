@@ -1,7 +1,9 @@
 import React from 'react'
 import { mount } from 'enzyme'
+import { axe } from 'jest-axe'
 import MenuButton from './'
 
+let wrapper
 const mountWrapper = (overrides = {}) =>
   mount(
     <MenuButton
@@ -16,11 +18,18 @@ const mountWrapper = (overrides = {}) =>
     />
   )
 
+afterEach(async () => {
+  expect(
+    // prevent axe from yelling about content not being in a landmark
+    await axe(`<main>${wrapper.html()}</main>`)
+  ).toHaveNoViolations()
+})
+
 describe('menu button trigger', () => {
   describe('keyboard interaction', () => {
     describe('down arrow', () => {
       test('Opens menu and moves focus to first menuitem', () => {
-        const wrapper = mountWrapper()
+        wrapper = mountWrapper()
         wrapper.find('button').simulate('keydown', {
           key: 'ArrowDown'
         })
@@ -35,7 +44,7 @@ describe('menu button trigger', () => {
 
     describe('up arrow', () => {
       test('Opens menu and moves focus to last menuitem', () => {
-        const wrapper = mountWrapper()
+        wrapper = mountWrapper()
         wrapper.find('button').simulate('keydown', {
           key: 'ArrowUp'
         })
@@ -51,7 +60,7 @@ describe('menu button trigger', () => {
 
   describe('roles/states/properties', () => {
     test('The element that opens the menu has role button.', () => {
-      const wrapper = mountWrapper()
+      wrapper = mountWrapper()
       expect(
         wrapper.find('button').exists() ||
           wrapper.find('[role=button]').exists()
@@ -59,7 +68,7 @@ describe('menu button trigger', () => {
     })
 
     test('The element with role button has aria-haspopup set to either menu or true.', () => {
-      const wrapper = mountWrapper()
+      wrapper = mountWrapper()
       const button = wrapper.find('button')
       expect(
         button.is('[aria-haspopup="true"]') ||
@@ -68,7 +77,7 @@ describe('menu button trigger', () => {
     })
 
     test('When the menu is displayed, the element with role button has aria-expanded set to true', () => {
-      const wrapper = mountWrapper()
+      wrapper = mountWrapper()
       const button = wrapper.find('button')
       button.simulate('click')
       const value = button
@@ -78,7 +87,7 @@ describe('menu button trigger', () => {
     })
 
     test('When the menu is not displayed, the element with role button has aria-expanded set to false', () => {
-      const wrapper = mountWrapper()
+      wrapper = mountWrapper()
       const button = wrapper.find('button')
       const value = button
         .getDOMNode()
@@ -87,7 +96,7 @@ describe('menu button trigger', () => {
     })
 
     test('button has a value specified for aria-controls that refers to the element with role menu.', () => {
-      const wrapper = mountWrapper()
+      wrapper = mountWrapper()
       const button = wrapper.find('button').getDOMNode()
       const menu = wrapper
         .find('[role="menu"]')
@@ -105,7 +114,7 @@ describe('menu button menu', () => {
     describe('Enter', () => {
       test('Activates the menu item / Closes the menu. / Sets focus on the menu button', () => {
         const onSelection = jest.fn()
-        const wrapper = mountWrapper({
+        wrapper = mountWrapper({
           onSelection
         })
         const button = wrapper.find('button').getDOMNode()
@@ -127,7 +136,7 @@ describe('menu button menu', () => {
 
     describe('Escape', () => {
       test('Closes the menu / Sets focus to the menu button', () => {
-        const wrapper = mountWrapper()
+        wrapper = mountWrapper()
         const button = wrapper.find('button')
         button.simulate('click') // open the menu
         wrapper.find('[role="menu"]').simulate('keydown', {
@@ -144,7 +153,7 @@ describe('menu button menu', () => {
 
     describe('Up arrow', () => {
       test('Moves focus to the previous menu item', () => {
-        const wrapper = mountWrapper()
+        wrapper = mountWrapper()
         const button = wrapper.find('button')
         button.simulate('click') // open the menu
         wrapper.setState({
@@ -162,7 +171,7 @@ describe('menu button menu', () => {
       })
 
       test('If focus is on the first menu item, moves focus to the last menu item', () => {
-        const wrapper = mountWrapper()
+        wrapper = mountWrapper()
         const button = wrapper.find('button')
         button.simulate('click') // open the menu
         wrapper.setState({
@@ -182,7 +191,7 @@ describe('menu button menu', () => {
 
     describe('Down arrow', () => {
       test('Moves focus to the next menu item', () => {
-        const wrapper = mountWrapper()
+        wrapper = mountWrapper()
         const button = wrapper.find('button')
         button.simulate('click') // open the menu
         wrapper.setState({
@@ -200,7 +209,7 @@ describe('menu button menu', () => {
       })
 
       test('If focus is on the last menu item, moves focus to the first menu item', () => {
-        const wrapper = mountWrapper()
+        wrapper = mountWrapper()
         const button = wrapper.find('button')
         button.simulate('click') // open the menu
         wrapper.setState({
@@ -220,7 +229,7 @@ describe('menu button menu', () => {
 
     describe('Home', () => {
       test('Moves focus to the first menu item', () => {
-        const wrapper = mountWrapper()
+        wrapper = mountWrapper()
         const button = wrapper.find('button')
         button.simulate('click') // open the menu
         wrapper.find('[role="menu"]').simulate('keydown', {
@@ -240,7 +249,7 @@ describe('menu button menu', () => {
 
     describe('End', () => {
       test('Moves focus to the first menu item', () => {
-        const wrapper = mountWrapper()
+        wrapper = mountWrapper()
         const button = wrapper.find('button')
         button.simulate('click') // open the menu
         wrapper.find('[role="menu"]').simulate('keydown', {
@@ -257,7 +266,7 @@ describe('menu button menu', () => {
 
     describe('Tab', () => {
       test('Closes the menu', () => {
-        const wrapper = mountWrapper()
+        wrapper = mountWrapper()
         const button = wrapper.find('button')
         button.simulate('click') // open the menu
         wrapper.find('[role="menu"]').simulate('keydown', {
@@ -280,7 +289,7 @@ describe('menu button menu', () => {
     })
 
     test('The menu is labeled by the menu button.', () => {
-      const wrapper = mountWrapper()
+      wrapper = mountWrapper()
       const button = wrapper.find('button').getDOMNode()
       const menu = wrapper
         .find('[role="menu"]')

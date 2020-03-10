@@ -27,6 +27,7 @@
     "http-server": "^0.12.1",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
+    "jest-axe": "^3.4.0",
     "jest-puppeteer": "^4.4.0",
     "lint-staged": "^9.5.0",
     "parcel": "^1.12.4",

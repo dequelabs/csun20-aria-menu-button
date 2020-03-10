@@ -3,7 +3,7 @@
   .dqpl-tile-header
   .MenuButton.ContactActions {
   position: absolute;
-  top: 11px;
+  top: 9.5px;
   right: 15px;
 }
 
@@ -12,8 +12,12 @@
   .dqpl-tile-header
   .MenuButton.ContactActions
   button {
-  border-radius: 0;
-  padding: 8px;
+  border: 1px solid #fff;
+  color: #fff;
+  background: transparent;
+  border-radius: 3px;
+  padding: 7px;
+  font-size: 14px;
 }
 
 .Contact .dqpl-text-input,
