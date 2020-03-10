@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/dequelabs/csun20-aria-menu-button.svg?style=svg&circle-token=11839c557fcab06771b60bfa406fe1b897363682)](https://circleci.com/gh/dequelabs/csun20-aria-menu-button)
-
 # Using Automation to Test UI Components for Accessibility During Development
+
+[![CircleCI](https://circleci.com/gh/dequelabs/csun20-aria-menu-button.svg?style=svg&circle-token=11839c557fcab06771b60bfa406fe1b897363682)](https://circleci.com/gh/dequelabs/csun20-aria-menu-button) [![Netlify Status](https://api.netlify.com/api/v1/badges/a20f03e4-ade4-4af1-ba8d-0542b71ca071/deploy-status)](https://app.netlify.com/sites/csun20-aria-menu-button/deploys)
 
 ## `whoami`
 
