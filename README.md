@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/dequelabs/csun20-aria-menu-button.svg?style=svg)](https://circleci.com/gh/dequelabs/csun20-aria-menu-button)
+[![CircleCI](https://circleci.com/gh/dequelabs/csun20-aria-menu-button.svg?style=svg&circle-token=11839c557fcab06771b60bfa406fe1b897363682)](https://circleci.com/gh/dequelabs/csun20-aria-menu-button)
 
 # Using Automation to Test UI Components for Accessibility During Development
 
