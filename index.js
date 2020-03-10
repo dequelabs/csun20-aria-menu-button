@@ -14,7 +14,7 @@ export default class MenuButton extends Component {
     expanded: false,
     focusIndex: null
   }
-  // TODO: use something better/guaranteed to be unique
+  // TODO: use something guaranteed to be unique
   idSuffix = `MenuButton-${idIndex++}`
   menuItemRefs = []
 

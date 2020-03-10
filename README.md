@@ -112,7 +112,7 @@ describe('menu button trigger', () => {
 })
 ```
 
-### Seeing that failing tests in action
+### Seeing the failing tests in action
 
 ```sh
 $ git checkout origin/failing
@@ -145,6 +145,8 @@ A11y automation libraries are really any library which automates accessibility t
   ```js
   <div role="bananas" /> // jsx-a11y will yell about "bananas" not being a valid role
   ```
+
+_[view eslint-plugin-jsx-a11y on github](https://github.com/evcohen/eslint-plugin-jsx-a11y)_
 
 ### Adding axe-core
 
