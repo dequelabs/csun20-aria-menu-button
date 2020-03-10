@@ -42,6 +42,7 @@
     "dev": "parcel demo/index.html",
     "lint": "eslint .",
     "fmt": "prettier --write *.{js,md} **/*.{js,md}",
+    "pretest": "npm run build",
     "test": "jest",
     "test:server": "http-server ./dist --port 1234"
   },
