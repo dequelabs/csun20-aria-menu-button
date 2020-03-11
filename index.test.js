@@ -301,23 +301,29 @@ describe('menu button menu', () => {
     })
 
     test('children have role="menuitem"', () => {
-      mountWrapper()
+      const menuItems = mountWrapper()
         .find('[role="menu"]')
         .children()
-        .forEach(child => {
-          expect(
-            child.getDOMNode().getAttribute('role')
-          ).toBe('menuitem')
-        })
+
+      expect(menuItems.length > 0).toBe(true)
+
+      menuItems.forEach(child => {
+        expect(
+          child.getDOMNode().getAttribute('role')
+        ).toBe('menuitem')
+      })
     })
 
     test('children have tabIndex={-1}', () => {
-      mountWrapper()
+      const menuItems = mountWrapper()
         .find('[role="menu"]')
         .children()
-        .forEach(child => {
-          expect(child.getDOMNode().tabIndex).toBe(-1)
-        })
+
+      expect(menuItems.length > 0).toBe(true)
+
+      menuItems.forEach(child => {
+        expect(child.getDOMNode().tabIndex).toBe(-1)
+      })
     })
   })
 })
