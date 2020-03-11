@@ -1,6 +1,5 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { axe } from 'jest-axe'
 import MenuButton from './'
 
 let wrapper
@@ -17,13 +16,6 @@ const mountWrapper = (overrides = {}) =>
       {...overrides}
     />
   )
-
-afterEach(async () => {
-  expect(
-    // prevent axe from yelling about content not being in a landmark
-    await axe(`<main>${wrapper.html()}</main>`)
-  ).toHaveNoViolations()
-})
 
 describe('menu button trigger', () => {
   describe('keyboard interaction', () => {

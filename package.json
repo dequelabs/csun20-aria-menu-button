@@ -149,19 +149,6 @@
         "moduleNameMapper": {
           "\\.(css)$": "<rootDir>test-utils/styleMock.js"
         }
-      },
-      {
-        "displayName": "e2e",
-        "testMatch": [
-          "**/e2e/*.js"
-        ],
-        "setupFilesAfterEnv": [
-          "<rootDir>test-utils/setupTests.js"
-        ],
-        "moduleNameMapper": {
-          "\\.(css)$": "<rootDir>test-utils/styleMock.js"
-        },
-        "preset": "jest-puppeteer"
       }
     ]
   },
