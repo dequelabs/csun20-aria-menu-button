@@ -39,9 +39,9 @@
     "simulant": "^0.2.2"
   },
   "scripts": {
-    "build": "parcel build demo/index.html",
-    "postbuild": "cp _redirects dist/",
-    "dev": "parcel demo/index.html",
+    "build": "echo \"nothing to see here folks...yet\"",
+    "postbuild": "echo \"nothing to see here folks...yet\"",
+    "dev": "echo \"nothing to see here folks...yet\"",
     "lint": "eslint .",
     "fmt": "prettier --write *.{js,md} **/*.{js,md}",
     "test": "jest --verbose",
@@ -149,19 +149,6 @@
         "moduleNameMapper": {
           "\\.(css)$": "<rootDir>test-utils/styleMock.js"
         }
-      },
-      {
-        "displayName": "e2e",
-        "testMatch": [
-          "**/e2e/*.js"
-        ],
-        "setupFilesAfterEnv": [
-          "<rootDir>test-utils/setupTests.js"
-        ],
-        "moduleNameMapper": {
-          "\\.(css)$": "<rootDir>test-utils/styleMock.js"
-        },
-        "preset": "jest-puppeteer"
       }
     ]
   },
