@@ -105,8 +105,3 @@ footer .dqpl-link {
   color: #fff;
 }
 
-/* NOTE: e2e! */
-footer .dqpl-link:focus,
-footer .dqpl-link:hover {
-  color: rgb(108, 218, 242);
-}
