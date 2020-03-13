@@ -190,7 +190,7 @@ Sure...the unit tests _can_ give us some good coverage there but end-to-end test
 In our e2e tests, we will spin our demo app up in a (headless) chrome browser via [puppeteer](https://github.com/puppeteer/puppeteer) and ensure things work as expected. This will be a very good time to have axe-core check our app out for things like color contrast issues, links without text, `aria-*` misuse and more.
 
 ```sh
-$ yarn test:e2e
+$ yarn test
 ```
 
 ## Tying it all together now
